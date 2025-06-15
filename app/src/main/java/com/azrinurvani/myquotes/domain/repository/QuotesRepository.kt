@@ -1,18 +1,12 @@
-package com.azrinurvani.myquotes.data.remote
+package com.azrinurvani.myquotes.domain.repository
 
 import com.azrinurvani.myquotes.domain.models.AllQuotesResponseDto
 import com.azrinurvani.myquotes.domain.models.QuotesDto
-import com.azrinurvani.myquotes.network.ALL_QUOTES
-import com.azrinurvani.myquotes.network.RANDOM_QUOTES
 import retrofit2.Response
-import retrofit2.http.GET
 
-interface ApiInterface {
+interface QuotesRepository {
 
-    @GET(ALL_QUOTES)
     suspend fun getAllQuotes() : Response<AllQuotesResponseDto>
 
-
-    @GET(RANDOM_QUOTES)
     suspend fun getRandomQuote() : Response<QuotesDto>
 }
