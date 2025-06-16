@@ -4,26 +4,22 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.azrinurvani.myquotes.domain.models.HomeQuotes
-import com.azrinurvani.myquotes.domain.models.QuotesDto
-import com.azrinurvani.myquotes.domain.use_cases.AllQuotesUseCase
-import com.azrinurvani.myquotes.domain.use_cases.RandomQuoteUseCase
+import com.azrinurvani.myquotes.domain.use_cases.GetAllQuotesUseCase
+import com.azrinurvani.myquotes.domain.use_cases.GetRandomQuoteUseCase
 import com.azrinurvani.myquotes.network.NetworkUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val allQuotesUseCase: AllQuotesUseCase,
-    private val randomQuoteUseCase: RandomQuoteUseCase
+    private val allQuotesUseCase: GetAllQuotesUseCase,
+    private val randomQuoteUseCase: GetRandomQuoteUseCase
 ) : ViewModel(){
 
     var quotesData = MutableStateFlow<NetworkUIState<HomeQuotes>>(NetworkUIState.Loading()) //this is getter

@@ -18,9 +18,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.azrinurvani.myquotes.domain.models.QuotesDto
 
 @Composable
-fun DetailQuote(){
+fun DetailQuote(
+    quotes: QuotesDto
+){
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,7 +40,7 @@ fun DetailQuote(){
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Dummy data from quotes",
+                text = quotes.quote ?: "",
                 color = Color.Black,
                 textAlign = TextAlign.Justify,
                 fontSize = 14.sp,
@@ -51,7 +54,7 @@ fun DetailQuote(){
                 modifier = Modifier.padding(5.dp)
             )
             Text(
-                text = "Dev Azri Nurvani",
+                text = quotes.author ?: "",
                 color = Color.Black,
                 textAlign = TextAlign.End,
                 fontSize = 12.sp,
@@ -67,5 +70,5 @@ fun DetailQuote(){
 @Preview(showBackground = true)
 @Composable
 fun DetailQuotePreview(){
-    DetailQuote()
+    DetailQuote(quotes = QuotesDto())
 }

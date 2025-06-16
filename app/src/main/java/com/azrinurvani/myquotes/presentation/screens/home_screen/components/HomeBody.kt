@@ -18,7 +18,7 @@ import com.azrinurvani.myquotes.domain.models.HomeQuotes
 @Composable
 fun HomeBody(
     homeQuotes: HomeQuotes?,
-    onClick : () -> Unit = {}
+    onClick : (id : String) -> Unit = {}
 ){
     LazyColumn(
         modifier = Modifier
@@ -45,11 +45,10 @@ fun HomeBody(
             QuotesItem(
                 quote = it,
                 modifier = Modifier.clickable {
-                onClick()
+                onClick(it?.id.toString())
             })
         }
     }
-    Log.d("HomeBody", "Quotes count: ${homeQuotes?.allQuotes?.size}")
 }
 
 @Preview(showSystemUi = true, showBackground = true)

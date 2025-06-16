@@ -9,4 +9,6 @@ interface QuotesRepository {
     suspend fun getAllQuotes() : Response<AllQuotesResponseDto>
 
     suspend fun getRandomQuote() : Response<QuotesDto>
+
+    suspend fun getSingleQuote(id : String) : Response<QuotesDto>
 }

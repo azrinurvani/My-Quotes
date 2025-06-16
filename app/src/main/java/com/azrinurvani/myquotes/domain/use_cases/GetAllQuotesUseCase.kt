@@ -5,7 +5,7 @@ import com.azrinurvani.myquotes.domain.repository.QuotesRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class AllQuotesUseCase @Inject constructor(
+class GetAllQuotesUseCase @Inject constructor(
     private val quotesRepository: QuotesRepository
 ) {
     operator fun invoke() = flow {

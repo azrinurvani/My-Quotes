@@ -17,4 +17,8 @@ class QuotesRepositoryImpl @Inject constructor(
     override suspend fun getRandomQuote(): Response<QuotesDto> {
         return apiInterface.getRandomQuote()
     }
+
+    override suspend fun getSingleQuote(id: String): Response<QuotesDto> {
+        return apiInterface.getSingleQuotes(id = id)
+    }
 }
