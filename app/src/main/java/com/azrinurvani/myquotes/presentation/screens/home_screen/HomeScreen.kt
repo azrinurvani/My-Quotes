@@ -2,6 +2,7 @@
 
 package com.azrinurvani.myquotes.presentation.screens.home_screen
 
+import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,13 +13,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.azrinurvani.myquotes.domain.models.HomeQuotes
+import com.azrinurvani.myquotes.network.NetworkUIState
+import com.azrinurvani.myquotes.presentation.components.AppProgressBar
 import com.azrinurvani.myquotes.presentation.components.ToolbarComponent
 import com.azrinurvani.myquotes.presentation.screens.home_screen.components.HomeBody
 
 @Composable
 fun HomeScreen(
+    homeViewModel: HomeViewModel = hiltViewModel(),
     onClick : () -> Unit = {}
 ){
+
+    val state = homeViewModel.quotesData.collectAsStateWithLifecycle().value
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
@@ -35,7 +45,18 @@ fun HomeScreen(
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ){
-            HomeBody(onClick = onClick)
+            when (state) {
+                is NetworkUIState.Error -> {
+                    Log.d("HomeScreen", "HomeScreen: ${state.message}")
+                }
+                is NetworkUIState.Loading -> {
+                    AppProgressBar()
+                }
+                is NetworkUIState.Success<HomeQuotes> -> {
+                    HomeBody(homeQuotes = state.data,onClick = onClick)
+                }
+            }
+
         }
 
     }

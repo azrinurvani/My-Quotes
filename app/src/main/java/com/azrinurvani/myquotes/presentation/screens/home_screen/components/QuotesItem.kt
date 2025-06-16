@@ -16,12 +16,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.azrinurvani.myquotes.domain.models.QuotesDto
 
 @Composable
 fun QuotesItem(
+    modifier: Modifier = Modifier,
+    quote: QuotesDto?,
     color : Color = Color.White,
-    textColor : Color = Color.Black,
-    modifier: Modifier = Modifier
+    textColor : Color = Color.Black
 ){
     Card(
         modifier = modifier
@@ -38,7 +40,7 @@ fun QuotesItem(
                 .padding(10.dp),
         ) {
             Text(
-                text = "Dummy data from quotes",
+                text = quote?.quote ?: "",
                 color = textColor,
                 textAlign = TextAlign.Justify,
                 fontSize = 14.sp,
@@ -47,7 +49,7 @@ fun QuotesItem(
             )
 
             Text(
-                text = "Dev Azri Nurvani",
+                text = quote?.author ?: "",
                 color = textColor,
                 textAlign = TextAlign.End,
                 fontSize = 14.sp,
@@ -61,5 +63,5 @@ fun QuotesItem(
 @Preview
 @Composable
 private fun QuotesItemPreview(){
-    QuotesItem()
+    QuotesItem(quote = QuotesDto())
 }

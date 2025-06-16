@@ -71,6 +71,10 @@ dependencies {
     //Retrofit
     implementation(libs.bundles.retrofit)
 
+    //OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
     //Lifecycle Runtime Compose
     implementation(libs.lifecycle.compose)
 }

@@ -12,6 +12,7 @@ hilt-version = "2.52"
 kotlin-kapt-version = "2.0.21"
 hilt-navigation = "1.2.0"
 retrofit = "2.11.0"
+okhttp = "4.12.0"
 lifecycle-compose = "2.9.1"
 
 [libraries]
@@ -40,6 +41,10 @@ hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", v
 #Retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 gson-convertor = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+#OkHttp
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
 #Lifecycle Compose
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-compose" }
